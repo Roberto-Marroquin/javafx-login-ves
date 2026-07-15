@@ -1,59 +1,79 @@
-    /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.robertomarroquin.controller;
+
+import com.robertomarroquin.view.LoginView;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
-import com.robertomaroquin.view.LoginView;
 import javafx.stage.StageStyle;
+
 /**
  *
  * @author informatica
  */
 public class SceneManager {
-    private Stage escenarioPrincipal; 
+
+    private Stage escenarioPrincipal;
     private Stage escenarioSecundario;
-    private Stage escenaPrincipal; 
+    private Scene escenaPrincipal;
     private static SceneManager instanciaSceneManager;
-    
-    private SceneManager(){
-        
+
+    private SceneManager() {
+
     }
-    
-    public void ventanaLogin(){
-         try {
-             this.escenaPrincipal.initStyle(StageStyle.TRANSPARENT);
-             loginView login = loginView.getInsatnciaLoginVIew();
-             cambiarEscena(login, 450,500);
-             this.escenaPrincipal.setFill(Color.TRANSPARENT);
-             new LoginController(login);
-        } catch (Exception errorPadre) {
-            JOptionPane.showMessageDialog(null, "Error de objeto nulo: ventana Login");
-            objetoNulo.printStackTrace();//mostrar todo el camino del error 
-        }catch (Exception errorPadre)
-            JOptionPane.showMessageDialog(null, "Error padre: ventana Login");
-            errorPadre.printStackTrace();
-    }
-    }
-    
-    
-    public void cambuiarEscena (Pane panel , int ancho , int alto ){
+
+    public void ventanaLogin() {
         try {
-            escenaPrincipal = new Scene(panel, ancjo, alto);
-            this.escenaPrincipal.setScene(escenaPricipal);
-            this.escenaPrincipal.sizeToScene();
-            this.escenaPrincipal.show();
-        } catch (Exception errorPadre) {
+            this.escenarioPrincipal.initStyle(StageStyle.TRANSPARENT);
+            LoginView login = LoginView.getInstanciaView();
+            cambiarEscena(login, 450, 500);
+            this.escenaPrincipal.setFill(Color.TRANSPARENT);
+            new LoginController(login);
+            } catch (NullPointerException objetoNulo) {
             JOptionPane.showMessageDialog(null, "Error de objeto nulo: Cambiar Escena");
             objetoNulo.printStackTrace();//mostrar odo el camino del error 
-        }catch (Exception errorPadre)
+        } catch (Exception errorPadre) {
+            JOptionPane.showMessageDialog(null, "Error padre: ventana Login");
+            errorPadre.printStackTrace();
+        }
+    }
+    public void ventanaBienvenida(){
+         try {
+           this.escenarioSecundario = new Stage();
+           this.escenarioSecundario.initStyle(StageStyle.TRANSPARENT);
+           this.escenarioSecundario.initModality(Modality.APLICATION_M);
+           BienvenidaView bienvenida = new BienvenidaView
+           
+           
+            } catch (NullPointerException objetoNulo) {
+            JOptionPane.showMessageDialog(null, "Error de objeto nulo: Cambiar Escena");
+            objetoNulo.printStackTrace();//mostrar odo el camino del error 
+        } catch (Exception errorPadre) {
+            JOptionPane.showMessageDialog(null, "Error padre: ventana Login");
+            errorPadre.printStackTrace();
+        }
+    }
+
+    public void cambiarEscena(Pane panel, int ancho, int alto) {
+        try {
+            escenaPrincipal = new Scene(panel, ancho, alto);
+            this.escenarioPrincipal.setScene(escenaPrincipal);
+            this.escenarioPrincipal.sizeToScene();
+            this.escenarioPrincipal.show();
+        } catch (NullPointerException objetoNulo) {
+            JOptionPane.showMessageDialog(null, "Error de objeto nulo: Cambiar Escena");
+            objetoNulo.printStackTrace();//mostrar odo el camino del error 
+        } catch (Exception errorPadre) {
             JOptionPane.showMessageDialog(null, "Error padre: cambiar Escena");
             errorPadre.printStackTrace();
+        }
     }
-        
 
     public Stage getEscenarioPrincipal() {
         return escenarioPrincipal;
@@ -71,15 +91,10 @@ public class SceneManager {
         this.escenarioSecundario = escenarioSecundario;
     }
 
-    public Stage getEscenaPrincipal() {
-        return escenaPrincipal;
-    }
-
-    public void setEscenaPrincipal(Stage escenaPrincipal) {
-        this.escenaPrincipal = escenaPrincipal;
-    }
 
     public static SceneManager getInstanciaSceneManager() {
+        if( instanciaSceneManager == null)
+            instanciaSceneManager = new SceneManager();
         return instanciaSceneManager;
     }
 
@@ -87,6 +102,4 @@ public class SceneManager {
         SceneManager.instanciaSceneManager = instanciaSceneManager;
     }
 
-  
-    
 }

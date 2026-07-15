@@ -4,19 +4,21 @@
  */
 package com.robertomarroquin.controller;
 
+import javafx.scene.image.Image;
+
 /**
  *
  * @author informatica
  */
 public class ImageController {
-   private final String RUTA_IMAGENES = "/com/robertomarroquin/resources/" ;
+   private final String RUTA_IMAGENES = "/com/robertomarroquin/resource/" ;
    
-   public image getImagenLogin(String nombreImagen){
-       image crearImagen;
+   public Image getImagenLogin(String nombreImagen){
+       Image crearImagen;
        
        switch (nombreImagen){
            case "logo":
-               crearImagen = new image(RUTA_IMAGENES + "login-logo.png");
+               crearImagen = new Image(RUTA_IMAGENES + "login-logo.png");
                break;
            default:
                crearImagen = new Image(RUTA_IMAGENES + "login-log.png");

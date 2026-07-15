@@ -9,7 +9,7 @@ package com.robertomarroquin.model;
  * @author informatica
  */
 public class Usuario {
-    private String pombreUsuario;
+    private String NombreUsuario;
     private String password;
     private String nombreCompleto;
     private Rol role;
@@ -18,12 +18,12 @@ public class Usuario {
         
     }
 
-    public String getPombreUsuario() {
-        return pombreUsuario;
+    public String getNombreUsuario() {
+        return NombreUsuario;
     }
 
-    public void setPombreUsuario(String pombreUsuario) {
-        this.pombreUsuario = pombreUsuario;
+    public void setNombreUsuario(String pombreUsuario) {
+        this.NombreUsuario = pombreUsuario;
     }
 
     public String getPassword() {
